@@ -21,7 +21,7 @@ public class OpenPhysicsObject : MonoBehaviour {
         rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
 
         // Create a constant force component
-        var constantForce = gameObject.AddComponent<ConstantForce>();
+        gameObject.AddComponent<ConstantForce>();
     }
 
     void FixedUpdate() {

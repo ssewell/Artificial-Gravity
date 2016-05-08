@@ -29,6 +29,6 @@ public class SpaceStation : MonoBehaviour {
     }
 
     public void SetTorque(float magnitude) {
-        var forceComponent = GetComponent<ConstantForce>().torque = new Vector3(0, maxTorque * magnitude, 0);
+        GetComponent<ConstantForce>().torque = new Vector3(0, maxTorque * magnitude, 0);
     }
 }

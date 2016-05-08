@@ -6,7 +6,6 @@ public class ReverseNormals : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Mesh mesh = GetComponent<MeshFilter>().mesh;
         // ReverseFaces();
         // AssetDatabase.CreateAsset(mesh, "Assets/AsteroidNormalizedFaces.asset");
     }

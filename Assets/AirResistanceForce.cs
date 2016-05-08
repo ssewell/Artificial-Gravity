@@ -24,7 +24,6 @@ public class AirResistanceForce {
         float radius = GetDeltaVector(GetClosestPointOnAxis(targetVector), targetVector).magnitude;
         float forceMagnitude = GetLinearVelocity(angularVelocity, radius);
         Vector3 forceVector = forceVectorNormalized * forceMagnitude;
-        Vector3 frictionVector = forceVector * Time.fixedDeltaTime;
 
         // Apply air vector to target
         Vector3 frictionVelocityVector = forceVector - targetVelocityVector;
@@ -51,8 +50,6 @@ public class AirResistanceForce {
     // Get the vector of the moving air
     protected Vector3 GetForceVectorNormalized(Vector3 target) {
         Vector3 axisHelper = GetClosestPointOnAxis(target);
-        Vector3 deltaVector = GetDeltaVector(axisHelper, target); // target - axisHelper;
-        float forceMagnitude = deltaVector.magnitude;
         Vector3 forceVector = Vector3.Cross(target, axisHelper).normalized;
         // Invert this to change the rotational direction
         forceVector = -forceVector;

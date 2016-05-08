@@ -11,9 +11,7 @@ public class RotatingAxisFriction : MonoBehaviour {
     
     public GameObject target;
     public bool clockwise = true;
-    public Camera camera;
-
-
+    
 
     // Use this for initialization
     void Start () {
@@ -38,16 +36,11 @@ public class RotatingAxisFriction : MonoBehaviour {
         float radius = GetDeltaVector(GetClosestPointOnAxis(targetVector), targetVector).magnitude;
         float forceMagnitude = GetLinearVelocity(angularVelocity, radius);
         Vector3 forceVector = forceVectorNormalized * forceMagnitude;
-        Vector3 frictionVector = forceVector * Time.deltaTime;
 
         // Apply air vector to target
         Vector3 frictionVelocityVector = forceVector - targetVelocityVector;
         targetForce.force = frictionVelocityVector.normalized * (float)Math.Pow(frictionVelocityVector.magnitude, 2);
 
-        //target.GetComponent<Rigidbody>().transform.LookAt(targetVector - targetVelocityVector);
-        // target.GetComponent<Rigidbody>().rotation = GetComponent<Rigidbody>().rotation;
-        // target.transform.LookAt(targetVector + targetVelocityVector);
-        // target.transform.LookAt(targetVector + targetVelocityVector);
         target.transform.LookAt(target.transform.position - frictionVelocityVector);
     }
 
@@ -71,7 +64,6 @@ public class RotatingAxisFriction : MonoBehaviour {
     protected Vector3 GetForceVectorNormalized(Vector3 target) {
         Vector3 axisHelper = GetClosestPointOnAxis(target);
         Vector3 deltaVector = GetDeltaVector(axisHelper, target); // target - axisHelper;
-        float forceMagnitude = deltaVector.magnitude;
         Vector3 forceVector = Vector3.Cross(target, axisHelper).normalized;
         forceVector = clockwise ? -forceVector : forceVector;
 
