@@ -38,11 +38,11 @@ public class Jetpack {
         float joyY = (Input.GetAxis("Pitch") - yCal) * joystickAmplitude;
         float joyZ = (Input.GetAxis("Yaw") - zCal) * joystickAmplitude;
         float joyVerticalThrust = (Input.GetAxis("Thrust Vertical") - tvCal) * thrustAmplitude;
-        //float joyThrust = (Input.GetAxis("Thrust") - tCal) * thrustAmplitude;
         float joyThrustFwd = (Input.GetAxis("Thrust Fwd") - tFwdCal) * thrustAmplitude;
         float joyThrustRev = (Input.GetAxis("Thrust Rev") - tRevCal) * thrustAmplitude;
         float joyThrust = joyThrustFwd - joyThrustRev;
-        
+        float joySideThrust = 0;
+
 
         /*
         if (Input.GetButton("Keyboard Roll Left")) {
@@ -70,6 +70,14 @@ public class Jetpack {
         }
         */
 
+        if (Input.GetButton("Thrust Left")) {
+            joySideThrust = -thrustAmplitude;
+        }
+
+        if (Input.GetButton("Thrust Right")) {
+            joySideThrust = thrustAmplitude;
+        }
+
         if (Input.GetButton("Center Joystick")) {
             CalibrateJoystick();
         }
@@ -90,15 +98,7 @@ public class Jetpack {
         rigidbody.AddTorque(angularVelocityDelta * Time.fixedDeltaTime* 10);
 
         // Apply joystick input for thrut
-        rigidbody.AddRelativeForce(new Vector3(0, joyVerticalThrust, joyThrust)); //joyThrust
-
-
-
-
-
-
-
-        targetForce.relativeForce += newForce;        
+        rigidbody.AddRelativeForce(new Vector3(joySideThrust, joyVerticalThrust, joyThrust)); //joyThrust        
     }
 
     void CalibrateJoystick() {
