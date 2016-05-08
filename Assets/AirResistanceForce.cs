@@ -2,33 +2,19 @@
 using System;
 using System.Collections;
 
-/* This was used initially to develop a theory on how to do air resistance around a spinning axis
- * Kept for historical reasons and in case more experimentation needs to be done
- */
 
-public class RotatingAxisFriction : MonoBehaviour {
+public class AirResistanceForce {
 
-    
-    public GameObject target;
-    public bool clockwise = true;
-    public Camera camera;
+    protected GameObject spinningObject;
 
-
-
-    // Use this for initialization
-    void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        ApplyForce(target);
+    public AirResistanceForce(GameObject spinningObjectSource) {
+        spinningObject = spinningObjectSource;
     }
 
-    public void ApplyForce(GameObject target) {
+    public void ApplyToGameObject(GameObject target) {
 
         // Setup variables
-        float angularVelocity = GetComponent<Rigidbody>().angularVelocity.magnitude;
+        float angularVelocity = spinningObject.GetComponent<Rigidbody>().angularVelocity.magnitude;
         Vector3 targetVector = target.transform.position;
         Vector3 targetVelocityVector = target.GetComponent<Rigidbody>().velocity;
         ConstantForce targetForce = target.GetComponent<ConstantForce>();
@@ -38,17 +24,12 @@ public class RotatingAxisFriction : MonoBehaviour {
         float radius = GetDeltaVector(GetClosestPointOnAxis(targetVector), targetVector).magnitude;
         float forceMagnitude = GetLinearVelocity(angularVelocity, radius);
         Vector3 forceVector = forceVectorNormalized * forceMagnitude;
-        Vector3 frictionVector = forceVector * Time.deltaTime;
+        Vector3 frictionVector = forceVector * Time.fixedDeltaTime;
 
         // Apply air vector to target
         Vector3 frictionVelocityVector = forceVector - targetVelocityVector;
-        targetForce.force = frictionVelocityVector.normalized * (float)Math.Pow(frictionVelocityVector.magnitude, 2);
+        targetForce.force = frictionVelocityVector.normalized * (float)Math.Pow(frictionVelocityVector.magnitude, 2) * 0.01f;
 
-        //target.GetComponent<Rigidbody>().transform.LookAt(targetVector - targetVelocityVector);
-        // target.GetComponent<Rigidbody>().rotation = GetComponent<Rigidbody>().rotation;
-        // target.transform.LookAt(targetVector + targetVelocityVector);
-        // target.transform.LookAt(targetVector + targetVelocityVector);
-        target.transform.LookAt(target.transform.position - frictionVelocityVector);
     }
 
     // Convert angular velocity and radians to linear velocity
@@ -73,8 +54,8 @@ public class RotatingAxisFriction : MonoBehaviour {
         Vector3 deltaVector = GetDeltaVector(axisHelper, target); // target - axisHelper;
         float forceMagnitude = deltaVector.magnitude;
         Vector3 forceVector = Vector3.Cross(target, axisHelper).normalized;
-        forceVector = clockwise ? -forceVector : forceVector;
-
+        // Invert this to change the rotational direction
+        forceVector = -forceVector;
         return forceVector;
     }
 }
