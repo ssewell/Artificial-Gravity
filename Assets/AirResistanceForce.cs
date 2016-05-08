@@ -5,16 +5,18 @@ using System.Collections;
 
 public class AirResistanceForce {
 
-    protected GameObject spinningObject;
-
-    public AirResistanceForce(GameObject spinningObjectSource) {
-        spinningObject = spinningObjectSource;
+    protected GameObject target;
+    protected GameObject spaceStation;
+    
+    public AirResistanceForce(GameObject spaceStation, GameObject target) {
+        this.target = target;
+        this.spaceStation = spaceStation;
     }
 
-    public void ApplyToGameObject(GameObject target) {
+    public void Apply() {
 
         // Setup variables
-        float angularVelocity = spinningObject.GetComponent<Rigidbody>().angularVelocity.magnitude;
+        float angularVelocity = spaceStation.GetComponent<Rigidbody>().angularVelocity.magnitude;
         Vector3 targetVector = target.transform.position;
         Vector3 targetVelocityVector = target.GetComponent<Rigidbody>().velocity;
         ConstantForce targetForce = target.GetComponent<ConstantForce>();
@@ -52,7 +54,6 @@ public class AirResistanceForce {
         Vector3 axisHelper = GetClosestPointOnAxis(target);
         Vector3 forceVector = Vector3.Cross(target, axisHelper).normalized;
         // Invert this to change the rotational direction
-        forceVector = -forceVector;
         return forceVector;
     }
 }
