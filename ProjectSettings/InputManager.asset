@@ -86,7 +86,7 @@ InputManager:
     axis: 27
     joyNum: 1
   - serializedVersion: 3
-    m_Name: ThrustFWD
+    m_Name: Thrust Fwd
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -102,7 +102,7 @@ InputManager:
     axis: 2
     joyNum: 1
   - serializedVersion: 3
-    m_Name: ThrustREV
+    m_Name: Thrust Rev
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
