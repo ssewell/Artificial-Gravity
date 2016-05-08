@@ -11,12 +11,12 @@ public class SpaceStation : MonoBehaviour {
 	}
 	
 	void Update () {
-
+        
     }
 
     void FixedUpdate() {
         
-        // Poor man's torque to hit a target velocity because Unity's Motor doesn't handle large values
+        // Poor man's torque to hit a target angular velocity because Unity's Motor doesn't handle large values
         float angularVelocity = GetComponent<Rigidbody>().angularVelocity.magnitude;
 
         if (angularVelocity > targetVelocity - targetVelocity / 10) {
@@ -25,6 +25,7 @@ public class SpaceStation : MonoBehaviour {
 
         if (angularVelocity > targetVelocity) {
             SetTorque(0.0f);
+            maxTorque = 0;
         }
     }
 
