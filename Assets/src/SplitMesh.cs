@@ -41,15 +41,19 @@ public class SplitMesh : MonoBehaviour {
 			child.name = "AsteroidPiece" + m;
 			child.AddComponent<MeshFilter> ().mesh = meshes [m];
 			child.AddComponent<MeshRenderer> ().material = ProductMaterial;
-			child.AddComponent<MeshCollider> ().convex = true;
+			child.AddComponent<MeshCollider> ();
+			child.AddComponent<Rigidbody> ().isKinematic = true;
+			child.GetComponent<Rigidbody> ().useGravity = false;
+			child.GetComponent<Rigidbody> ().collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+			child.GetComponent<Rigidbody> ().interpolation = RigidbodyInterpolation.Extrapolate;
 			child.transform.parent = parent.transform;
 
 			Debug.Log ("Creating Mesh...");
-			AssetDatabase.CreateAsset(meshes[m], "Assets/AsteroidSubMesh" + m + ".asset");
+			AssetDatabase.CreateAsset(meshes[m], "Assets/Models/Asteroid Chunks/AsteroidSubMesh" + m + ".asset");
 		}
 
 
-		PrefabUtility.CreatePrefab("Assets/SplitAsteroid.prefab", parent);
+		PrefabUtility.CreatePrefab("Assets/Prefabs/SplitAsteroid.prefab", parent);
 		Debug.Log("Proccess Finished...");
 	}
 	
