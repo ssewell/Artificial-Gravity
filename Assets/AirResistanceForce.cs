@@ -29,7 +29,7 @@ public class AirResistanceForce {
 
         // Apply air vector to target
         Vector3 frictionVelocityVector = forceVector - targetVelocityVector;
-        targetForce.force = frictionVelocityVector.normalized * (float)Math.Pow(frictionVelocityVector.magnitude, 2) * 0.01f;
+        targetForce.force += frictionVelocityVector.normalized * (float)Math.Pow(frictionVelocityVector.magnitude, 2) * 0.01f;
 
     }
 

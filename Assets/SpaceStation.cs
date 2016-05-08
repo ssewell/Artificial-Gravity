@@ -4,7 +4,7 @@ using System.Collections;
 public class SpaceStation : MonoBehaviour {
 
     protected float maxTorque = 1e+09f;
-    protected float targetVelocity = 0.01f;
+    protected float targetVelocity = 0.05f;
 
     void Start () {
         SetTorque(1f);

@@ -31,7 +31,7 @@ public class Jetpack {
 
 
         float joystickAmplitude = 0.1f;
-        float thrustAmplitude = 1.0f;
+        float thrustAmplitude = 5.0f;
 
         // Collect joystick input
         float joyX = (Input.GetAxis("Roll") - xCal) * joystickAmplitude;
@@ -42,12 +42,7 @@ public class Jetpack {
         float joyThrustFwd = (Input.GetAxis("Thrust Fwd") - tFwdCal) * thrustAmplitude;
         float joyThrustRev = (Input.GetAxis("Thrust Rev") - tRevCal) * thrustAmplitude;
         float joyThrust = joyThrustFwd - joyThrustRev;
-
-
-
-        Debug.Log(joyThrust);
-
-
+        
 
         /*
         if (Input.GetButton("Keyboard Roll Left")) {
