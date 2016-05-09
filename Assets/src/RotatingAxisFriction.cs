@@ -63,7 +63,6 @@ public class RotatingAxisFriction : MonoBehaviour {
     // Get the vector of the moving air
     protected Vector3 GetForceVectorNormalized(Vector3 target) {
         Vector3 axisHelper = GetClosestPointOnAxis(target);
-        Vector3 deltaVector = GetDeltaVector(axisHelper, target); // target - axisHelper;
         Vector3 forceVector = Vector3.Cross(target, axisHelper).normalized;
         forceVector = clockwise ? -forceVector : forceVector;
 

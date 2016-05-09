@@ -10,7 +10,7 @@ public class OpenPhysicsObject : MonoBehaviour {
 
     public GameObject SpaceStation;
     public float Mass = 1.0f;
-
+    public Character Parent;
 
     public void Start() {
         // Create and configure rigidbody component
@@ -24,7 +24,7 @@ public class OpenPhysicsObject : MonoBehaviour {
         gameObject.AddComponent<ConstantForce>();
 
         airResistanceForce = new AirResistanceForce(SpaceStation, gameObject);
-        jetpack = new Jetpack(SpaceStation, gameObject, 1.0f);
+        jetpack = new Jetpack(gameObject, 1.0f, Parent);
     }
 
     protected AirResistanceForce airResistanceForce;
