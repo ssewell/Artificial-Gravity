@@ -6,19 +6,22 @@ public class Jetpack {
     protected GameObject target;
     protected GameObject spaceStation;
 
-    float xCal = 0;
-    float yCal = 0;
-    float zCal = 0;
-    float tvCal = 0;
-    float tCal = 0;
-    float tFwdCal = 0;
-    float tRevCal = 0;
+    protected float xCal = 0;
+    protected float yCal = 0;
+    protected float zCal = 0;
+    protected float tvCal = 0;
+    protected float tCal = 0;
+    protected float tFwdCal = 0;
+    protected float tRevCal = 0;
+
+    protected float powerScale = 1.0f;
 
 
 
-    public Jetpack(GameObject spaceStation, GameObject target) {
+    public Jetpack(GameObject spaceStation, GameObject target, float powerScale) {
         this.target = target;
         this.spaceStation = spaceStation;
+        this.powerScale = powerScale;
         CalibrateJoystick();
     }
 
@@ -30,8 +33,8 @@ public class Jetpack {
         }
 
 
-        float joystickAmplitude = 0.1f;
-        float thrustAmplitude = 8.0f;
+        float joystickAmplitude = 0.1f * powerScale;
+        float thrustAmplitude = 8.0f * powerScale;
 
         // Collect joystick input
         float joyX = (Input.GetAxis("Roll") - xCal) * joystickAmplitude;
