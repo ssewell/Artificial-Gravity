@@ -93,13 +93,6 @@ public class Jetpack {
         rigidbody.AddRelativeTorque(new Vector3(joyY, 0, 0));
         rigidbody.AddRelativeTorque(new Vector3(0, joyZ, 0));
 
-        // Slow down spin in relation to the station
-        // TODO: make the power of the spin of the station proportional to how far away you are from center. 
-        // spaceStation angular velocity * (% of total possible radius)
-        
-        Vector3 angularVelocityDelta = spaceStation.GetComponent<Rigidbody>().angularVelocity - target.GetComponent<Rigidbody>().angularVelocity;
-        rigidbody.AddTorque(angularVelocityDelta * Time.fixedDeltaTime* 10);
-
         // Apply joystick input for thrut
         rigidbody.AddRelativeForce(new Vector3(joySideThrust, joyVerticalThrust, joyThrust)); //joyThrust        
     }

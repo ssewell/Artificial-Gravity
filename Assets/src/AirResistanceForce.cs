@@ -14,7 +14,11 @@ public class AirResistanceForce {
     }
 
     public void Apply() {
+        ApplyLinear();
+        ApplyTorque();
+    }
 
+    protected void ApplyLinear() {
         // Setup variables
         float angularVelocity = spaceStation.GetComponent<Rigidbody>().angularVelocity.magnitude;
         Vector3 targetVector = target.transform.position;
@@ -26,11 +30,21 @@ public class AirResistanceForce {
         float radius = GetDeltaVector(GetClosestPointOnAxis(targetVector), targetVector).magnitude;
         float forceMagnitude = GetLinearVelocity(angularVelocity, radius);
         Vector3 forceVector = forceVectorNormalized * forceMagnitude;
-        
+
         // Apply air vector to target
         Vector3 frictionVelocityVector = forceVector - targetVelocityVector;
         targetForce.force += frictionVelocityVector.normalized * (float)Math.Pow(frictionVelocityVector.magnitude, 2) * 0.005f;
+    }
 
+    void ApplyTorque() {
+        Vector3 targetVector = target.transform.position;
+        var rigidbody = target.GetComponent<Rigidbody>();
+        float radius = GetDeltaVector(GetClosestPointOnAxis(targetVector), targetVector).magnitude;
+        if (radius > 600) radius = 600.0f;
+        Vector3 realAngularVelocity = spaceStation.GetComponent<Rigidbody>().angularVelocity * (1 - (radius / 600));
+        realAngularVelocity = Vector3.zero;
+        Vector3 angularVelocityDelta = realAngularVelocity - target.GetComponent<Rigidbody>().angularVelocity;
+        rigidbody.AddTorque(angularVelocityDelta * Time.fixedDeltaTime * 10);
     }
 
     // Convert angular velocity and radians to linear velocity
