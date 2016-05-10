@@ -151,7 +151,7 @@ AudioReverbFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 166704067}
-  m_Enabled: 0
+  m_Enabled: 1
   m_DryLevel: 0
   m_Room: -1125
   m_RoomHF: -2875
@@ -358,7 +358,7 @@ AudioReverbFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 290289494}
-  m_Enabled: 0
+  m_Enabled: 1
   m_DryLevel: 0
   m_Room: -1125
   m_RoomHF: -2875
@@ -1136,7 +1136,7 @@ Light:
   serializedVersion: 6
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.3
+  m_Intensity: 1
   m_Range: 10000
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -1927,7 +1927,7 @@ AudioReverbFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1496574759}
-  m_Enabled: 0
+  m_Enabled: 1
   m_DryLevel: 0
   m_Room: -1125
   m_RoomHF: -2875
@@ -2200,7 +2200,7 @@ AudioReverbFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1654078991}
-  m_Enabled: 0
+  m_Enabled: 1
   m_DryLevel: 0
   m_Room: -1125
   m_RoomHF: -2875
@@ -2419,7 +2419,7 @@ AudioReverbFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1948594967}
-  m_Enabled: 0
+  m_Enabled: 1
   m_DryLevel: 0
   m_Room: -1125
   m_RoomHF: -2875
@@ -2804,7 +2804,7 @@ AudioReverbFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2099811522}
-  m_Enabled: 0
+  m_Enabled: 1
   m_DryLevel: 0
   m_Room: -1125
   m_RoomHF: -2875

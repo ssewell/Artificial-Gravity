@@ -17,7 +17,7 @@ public class SoundService : MonoBehaviour {
         magnitude = smoothe(soundID, magnitude, smoothing);
         var audio = audioSource(soundID);
         audio.volume = GetValueInRange(magnitude, 0, 1);
-        audio.pitch = GetValueInRange(magnitude, 0.8f, 1.1f);   
+        audio.pitch = GetValueInRange(magnitude, 1.0f, 1.6f);   
         audio.GetComponent<AudioLowPassFilter>().cutoffFrequency = GetValueInRange(magnitude, 10, 5000);
         playAudio(audio);
     }

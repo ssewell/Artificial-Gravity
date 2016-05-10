@@ -29,35 +29,7 @@ public class Jetpack {
         float joyThrustRev = Input.GetAxis("Thrust Rev") - tRevCal;
         float joyThrust = (joyThrustFwd - joyThrustRev) / 2;
         float joySideThrust = 0;
-
-        Debug.Log(joyThrust);
-
-        /*
-        if (Input.GetButton("Keyboard Roll Left")) {
-            joyX += joystickAmplitude;
-        }
-
-        if (Input.GetButton("Keyboard Roll Right")) {
-            joyX -= joystickAmplitude;
-        }
-
-        if (Input.GetButton("Keyboard Pitch Up")) {
-            joyY -= joystickAmplitude;
-        }
-
-        if (Input.GetButton("Keyboard Pitch Down")) {
-            joyY += joystickAmplitude;
-        }
-
-        if (Input.GetButton("Keyboard Yaw Left")) {
-            joyZ -= joystickAmplitude;
-        }
-
-        if (Input.GetButton("Keyboard Yaw Right")) {
-            joyZ += joystickAmplitude;
-        }
-        */
-
+        
         if (Input.GetButton("Thrust Left")) {
             joySideThrust = -1;
         }
@@ -65,6 +37,57 @@ public class Jetpack {
         if (Input.GetButton("Thrust Right")) {
             joySideThrust = 1;
         }
+
+
+
+        if (Input.GetButton("Thrust Up")) {
+            joyVerticalThrust = 1;
+        }
+
+        if (Input.GetButton("Thrust Down")) {
+            joyVerticalThrust = -1;
+        }
+
+        if (Input.GetButton("Thrust Fwd")) {
+            joyThrust = 1;
+        }
+
+        if (Input.GetButton("Thrust Rev")) {
+            joyThrust = -1;
+        }
+
+        if (Input.GetButton("Thrust Left")) {
+            joySideThrust = 1;
+        }
+
+        if (Input.GetButton("Thrust Right")) {
+            joySideThrust = -1;
+        }
+
+        if (Input.GetButton("Roll Left")) {
+            joyX = 1;
+        }
+
+        if (Input.GetButton("Roll Right")) {
+            joyX = -1;
+        }
+
+        if (Input.GetButton("Pitch Down")) {
+            joyY = 1;
+        }
+
+        if (Input.GetButton("Pitch Up")) {
+            joyY = -1;
+        }
+
+        if (Input.GetButton("Yaw Left")) {
+            joyZ = -1;
+        }
+
+        if (Input.GetButton("Yaw Right")) {
+            joyZ = 1;
+        }
+
 
         if (Input.GetButton("Center Joystick")) {
             CalibrateJoystick();
