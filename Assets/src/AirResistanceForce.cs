@@ -5,12 +5,10 @@ using System.Collections;
 
 public class AirResistanceForce {
 
-    protected GameObject target;
-    protected GameObject spaceStation;
-    
-    public AirResistanceForce(GameObject spaceStation, GameObject target) {
+    public AirResistanceForce(GameObject spaceStation, GameObject target, Character character) {
         this.target = target;
         this.spaceStation = spaceStation;
+        sound = character.Sound;
     }
 
     public void Apply() {
@@ -34,9 +32,24 @@ public class AirResistanceForce {
         // Apply air vector to target
         Vector3 frictionVelocityVector = forceVector - targetVelocityVector;
         targetForce.force += frictionVelocityVector.normalized * (float)Math.Pow(frictionVelocityVector.magnitude, 2) * 0.005f;
-    }
 
-    void ApplyTorque() {
+        // Make wind sound
+        float airVelocityNomalized = frictionVelocityVector.magnitude / 40f;
+        Debug.Log(frictionVelocityVector.magnitude);
+        if (airVelocityNomalized > 1.0f) airVelocityNomalized = 1.0f;
+        if (airVelocityNomalized < 0.0f) airVelocityNomalized = 0.0f;
+
+        sound.PlayAudioForValue(9, airVelocityNomalized, 0.5f, 0, 1.0f, 0.9f, 1.5f, 200f, 6000f);
+
+        //(int soundID, float magnitude, float smoothing, float minVolume, float maxVolume, float minPitch, float maxPitch, float minFilter, float maxFilter) {
+
+
+
+
+
+        }
+
+    protected void ApplyTorque() {
         Vector3 targetVector = target.transform.position;
         var rigidbody = target.GetComponent<Rigidbody>();
         float radius = GetDeltaVector(GetClosestPointOnAxis(targetVector), targetVector).magnitude;
@@ -75,4 +88,8 @@ public class AirResistanceForce {
 
         return forceVector;
     }
+
+    protected GameObject target;
+    protected GameObject spaceStation;
+    protected SoundService sound;
 }

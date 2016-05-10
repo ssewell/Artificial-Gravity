@@ -23,7 +23,7 @@ public class OpenPhysicsObject : MonoBehaviour {
         // Create a constant force component
         gameObject.AddComponent<ConstantForce>();
 
-        airResistanceForce = new AirResistanceForce(SpaceStation, gameObject);
+        airResistanceForce = new AirResistanceForce(SpaceStation, gameObject, Parent);
         jetpack = new Jetpack(gameObject, 1.0f, Parent);
     }
 

@@ -11,11 +11,6 @@ public class Jetpack {
     }
 
 	public void Apply() {
-        Vector3 newForce = Vector3.zero;
-        if (Input.GetButton("Thrust Up")) {
-            newForce.y = 1f;
-        }
-
 
         float joystickAmplitude = 0.1f * powerScale;
         float thrustAmplitude = 8.0f * powerScale;
@@ -29,71 +24,26 @@ public class Jetpack {
         float joyThrustRev = Input.GetAxis("Thrust Rev") - tRevCal;
         float joyThrust = (joyThrustFwd - joyThrustRev) / 2;
         float joySideThrust = 0;
-        
-        if (Input.GetButton("Thrust Left")) {
-            joySideThrust = -1;
-        }
 
-        if (Input.GetButton("Thrust Right")) {
-            joySideThrust = 1;
-        }
+        // Linear thrust keyboard input
+        applyButtonToAxis(ref joySideThrust, "Thrust Left", -1);
+        applyButtonToAxis(ref joySideThrust, "Thrust Right", 1);
+        applyButtonToAxis(ref joyVerticalThrust, "Thrust Up", 1);
+        applyButtonToAxis(ref joyVerticalThrust, "Thrust Down", -1);
+        applyButtonToAxis(ref joyThrust, "Thrust Fwd", 1);
+        applyButtonToAxis(ref joyThrust, "Thrust Rev", -1);
 
-
-
-        if (Input.GetButton("Thrust Up")) {
-            joyVerticalThrust = 1;
-        }
-
-        if (Input.GetButton("Thrust Down")) {
-            joyVerticalThrust = -1;
-        }
-
-        if (Input.GetButton("Thrust Fwd")) {
-            joyThrust = 1;
-        }
-
-        if (Input.GetButton("Thrust Rev")) {
-            joyThrust = -1;
-        }
-
-        if (Input.GetButton("Thrust Left")) {
-            joySideThrust = 1;
-        }
-
-        if (Input.GetButton("Thrust Right")) {
-            joySideThrust = -1;
-        }
-
-        if (Input.GetButton("Roll Left")) {
-            joyX = 1;
-        }
-
-        if (Input.GetButton("Roll Right")) {
-            joyX = -1;
-        }
-
-        if (Input.GetButton("Pitch Down")) {
-            joyY = 1;
-        }
-
-        if (Input.GetButton("Pitch Up")) {
-            joyY = -1;
-        }
-
-        if (Input.GetButton("Yaw Left")) {
-            joyZ = -1;
-        }
-
-        if (Input.GetButton("Yaw Right")) {
-            joyZ = 1;
-        }
-
-
+        // Attitude keyboard input
+        applyButtonToAxis(ref joyX, "Roll Right", -1);
+        applyButtonToAxis(ref joyX, "Roll Left", 1);
+        applyButtonToAxis(ref joyY, "Pitch Down", 1);
+        applyButtonToAxis(ref joyY, "Pitch Up", -1);
+        applyButtonToAxis(ref joyZ, "Yaw Left", -1);
+        applyButtonToAxis(ref joyZ, "Yaw Right", 1);
+   
         if (Input.GetButton("Center Joystick")) {
             CalibrateJoystick();
         }
-
-
 
         // Apply joystick input to torque
         var rigidbody = target.GetComponent<Rigidbody>();
@@ -134,8 +84,13 @@ public class Jetpack {
         sound.PlayAudioForJoystick(6, joyX, smoothing);
         sound.PlayAudioForJoystick(7, joyY, smoothing);
         sound.PlayAudioForJoystick(8, joyZ, smoothing);
+    }
 
-
+    protected void applyButtonToAxis(ref float axis, string inputName, float value) {
+        if (Input.GetButton(inputName)) {
+            axis = value;
+        }
+        
     }
 
     void CalibrateJoystick() {
