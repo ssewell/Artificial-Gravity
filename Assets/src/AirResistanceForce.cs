@@ -38,6 +38,7 @@ public class AirResistanceForce {
         Debug.Log(frictionVelocityVector.magnitude);
         if (airVelocityNomalized > 1.0f) airVelocityNomalized = 1.0f;
         if (airVelocityNomalized < 0.0f) airVelocityNomalized = 0.0f;
+        airVelocityNomalized = (float) Math.Pow(airVelocityNomalized, 2.0f);
 
         sound.PlayAudioForValue(9, airVelocityNomalized, 0.5f, 0, 1.0f, 0.9f, 1.5f, 200f, 6000f);
 
