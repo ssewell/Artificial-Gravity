@@ -1338,8 +1338,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce2c97b71bfe24026a8c1e35b8323199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitalStrength: 2
-  DistanceBeforeShoesTakeEffect: 50
+  InitalStrength: 1.5
+  DistanceBeforeShoesTakeEffect: 20
   DebugDraw: 1
 --- !u!1001 &1573123892
 Prefab:
