@@ -18,11 +18,11 @@ public class AirResistanceForce {
 
     protected void ApplyLinear() {
         // Setup variables
-        float angularVelocity = spaceStation.GetComponent<Rigidbody>().angularVelocity.magnitude;
+        float angularVelocity = 0;
         Vector3 targetVector = target.transform.position;
         Vector3 targetVelocityVector = target.GetComponent<Rigidbody>().velocity;
         ConstantForce targetForce = target.GetComponent<ConstantForce>();
-
+        
         // Get air vector
         Vector3 forceVectorNormalized = GetForceVectorNormalized(targetVector);
         float radius = GetDeltaVector(GetClosestPointOnAxis(targetVector), targetVector).magnitude;
@@ -35,7 +35,6 @@ public class AirResistanceForce {
 
         // Make wind sound
         float airVelocityNomalized = frictionVelocityVector.magnitude / 40f;
-        Debug.Log(frictionVelocityVector.magnitude);
         if (airVelocityNomalized > 1.0f) airVelocityNomalized = 1.0f;
         if (airVelocityNomalized < 0.0f) airVelocityNomalized = 0.0f;
         airVelocityNomalized = (float) Math.Pow(airVelocityNomalized, 2.0f);
@@ -55,8 +54,8 @@ public class AirResistanceForce {
         var rigidbody = target.GetComponent<Rigidbody>();
         float radius = GetDeltaVector(GetClosestPointOnAxis(targetVector), targetVector).magnitude;
         if (radius > 600) radius = 600.0f;
-        Vector3 realAngularVelocity = spaceStation.GetComponent<Rigidbody>().angularVelocity * (1 - (radius / 600));
-        realAngularVelocity = Vector3.zero;
+        Vector3 realAngularVelocity = - new Vector3(0, 0.05f, 0) * (1 - (radius / 600));
+        //Vector3 realAngularVelocity = Vector3.zero;
         Vector3 angularVelocityDelta = realAngularVelocity - target.GetComponent<Rigidbody>().angularVelocity;
         rigidbody.AddTorque(angularVelocityDelta * Time.fixedDeltaTime * 10);
     }

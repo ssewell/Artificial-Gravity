@@ -25,9 +25,12 @@ public class OpenPhysicsObject : MonoBehaviour {
 
         airResistanceForce = new AirResistanceForce(SpaceStation, gameObject, Parent);
         jetpack = new Jetpack(gameObject, 1.0f, Parent);
+        spaceStationForce = new SpaceStationForce(gameObject);
+        
     }
 
     protected AirResistanceForce airResistanceForce;
+    protected SpaceStationForce spaceStationForce;
     protected Jetpack jetpack;
 
     void FixedUpdate() {
@@ -37,5 +40,7 @@ public class OpenPhysicsObject : MonoBehaviour {
 
         airResistanceForce.Apply();
         jetpack.Apply();
+        spaceStationForce.Apply();
+        //Debug.Log(forceComponent.force);
     }
 }
