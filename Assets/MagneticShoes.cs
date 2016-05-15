@@ -29,7 +29,7 @@ public class MagneticShoes : MonoBehaviour {
 			
 		if (Physics.Raycast (transform.position, dir, out hit, DistanceBeforeShoesTakeEffect)) {
 			float inverseDistanceSquared = 1.0f / Mathf.Max(hit.distance * hit.distance, 0.00001f); // Avoid division by 0
-			gameObject.GetComponent<Rigidbody> ().AddRelativeForce (dir * CurrentStrength * inverseDistanceSquared);
+			gameObject.GetComponent<Rigidbody> ().AddForce (dir * CurrentStrength * inverseDistanceSquared);
 		}
 	}
 }
