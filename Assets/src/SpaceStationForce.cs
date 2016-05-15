@@ -13,8 +13,6 @@ public class SpaceStationForce{
         ApplyLinear();
     }
 
-    int i = 0;
-
     public void ApplyLinear() {
         Rigidbody tRigidBody = target.GetComponent<Rigidbody>();
         float angularVelocity = new Vector3(0, 0.05f, 0).magnitude;
