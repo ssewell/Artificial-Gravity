@@ -57,7 +57,7 @@ public class AirResistanceForce {
         Vector3 realAngularVelocity = - new Vector3(0, 0.05f, 0) * (1 - (radius / 600));
         //Vector3 realAngularVelocity = Vector3.zero;
         Vector3 angularVelocityDelta = realAngularVelocity - target.GetComponent<Rigidbody>().angularVelocity;
-        rigidbody.AddTorque(angularVelocityDelta * Time.fixedDeltaTime * 10);
+        rigidbody.AddTorque(angularVelocityDelta * Time.fixedDeltaTime * 10 * (radius / 600)) ;
     }
 
     // Convert angular velocity and radians to linear velocity
