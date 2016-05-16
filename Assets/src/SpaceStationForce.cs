@@ -15,6 +15,8 @@ public class SpaceStationForce{
 
     public void ApplyLinear() {
         Rigidbody tRigidBody = target.GetComponent<Rigidbody>();
+        float mass = tRigidBody.mass;
+        Debug.Log(mass);
         float angularVelocity = new Vector3(0, 0.05f, 0).magnitude;
         Vector3 tPosition = target.transform.position;
         Vector3 tVelocity= target.GetComponent<Rigidbody>().velocity;
@@ -35,7 +37,7 @@ public class SpaceStationForce{
         Vector3 f = fNormalized * linearVelocityDelta;
 
         // Add this to velocity
-        tRigidBody.velocity += f * Time.fixedDeltaTime;
+        tRigidBody.velocity += f * Time.fixedDeltaTime * mass;
 
         // Now solve for centrifugal force
 
@@ -46,13 +48,13 @@ public class SpaceStationForce{
         float fComponentSpaceStation = GetLinearVelocity(angularVelocity, radius);
 
         // Get centrifugal force
-        float centrifugalForce = Mathf.Pow(fComponent + fComponentSpaceStation, 2) / radius;
+        float centrifugalForce = Mathf.Pow(fComponent - fComponentSpaceStation, 2) / radius;
 
         // Get the unit vector for the direction of centrifugal force
         Vector3 centrifugalForceVector = (tPosition - GetClosestPointOnAxis(tPosition)).normalized;
 
         // Add centrifugal force to velocity
-        tRigidBody.velocity += centrifugalForceVector * centrifugalForce * Time.fixedDeltaTime;
+        tRigidBody.velocity += centrifugalForceVector * centrifugalForce * Time.fixedDeltaTime * mass;
 
 
         // Now solve for anti-centrifugal force

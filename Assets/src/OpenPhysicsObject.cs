@@ -9,7 +9,7 @@ using System.Collections;
 public class OpenPhysicsObject : MonoBehaviour {
 
     public GameObject SpaceStation;
-    public float Mass = 1.0f;
+    public float Mass = 3.0f;
     public Character Parent;
 
     public void Start() {

@@ -328,7 +328,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 234731556}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!23 &128583206
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -567,7 +567,7 @@ Light:
   m_SpotAngle: 103
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_Strength: 1
     m_Bias: 0.05
@@ -627,7 +627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpaceStation: {fileID: 2085000225}
-  Mass: 1
+  Mass: 1.5
   Parent: {fileID: 234731551}
 --- !u!4 &234731556
 Transform:
@@ -636,15 +636,15 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 234731550}
   m_LocalRotation: {x: -0.707106, y: 0, z: 0, w: 0.7071076}
-  m_LocalPosition: {x: -38.8, y: -727.18, z: -60.25}
+  m_LocalPosition: {x: -39.1, y: -728.9, z: -60.18}
   m_LocalScale: {x: 0.6292894, y: 0.6292894, z: 0.6292894}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
   m_Children:
-  - {fileID: 357140630}
   - {fileID: 791737417}
   - {fileID: 128583205}
-  - {fileID: 98571223}
   - {fileID: 1116342929}
+  - {fileID: 98571223}
+  - {fileID: 1719729724}
   m_Father: {fileID: 0}
   m_RootOrder: 5
 --- !u!114 &234731557
@@ -768,7 +768,7 @@ Light:
   m_SpotAngle: 103
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_Strength: 1
     m_Bias: 0.05
@@ -853,6 +853,10 @@ Prefab:
       propertyPath: m_Name
       value: Rotating Scafolding South
       objectReference: {fileID: 0}
+    - target: {fileID: 103610, guid: df30a28ea06e86c498da59465408ebca, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: df30a28ea06e86c498da59465408ebca, type: 3}
   m_IsPrefabParent: 0
@@ -890,7 +894,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 234731556}
+  m_Father: {fileID: 1719729724}
   m_RootOrder: 0
 --- !u!81 &357140631
 AudioListener:
@@ -1421,7 +1425,7 @@ Transform:
   - {fileID: 419912000}
   - {fileID: 1528902350}
   m_Father: {fileID: 234731556}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!1 &888684678
 GameObject:
   m_ObjectHideFlags: 0
@@ -1838,7 +1842,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 234731556}
-  m_RootOrder: 4
+  m_RootOrder: 2
 --- !u!1001 &1195229298
 Prefab:
   m_ObjectHideFlags: 0
@@ -2399,6 +2403,35 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1684021839}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1719729723
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1719729724}
+  m_Layer: 0
+  m_Name: Camera Container
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1719729724
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1719729723}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.8126433, y: 1.8126435, z: 1.8126435}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 357140630}
+  m_Father: {fileID: 234731556}
+  m_RootOrder: 4
 --- !u!1 &1728363525
 GameObject:
   m_ObjectHideFlags: 0
@@ -2621,7 +2654,7 @@ Light:
   m_SpotAngle: 103
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_Strength: 1
     m_Bias: 0.05
@@ -3153,6 +3186,10 @@ Prefab:
     - target: {fileID: 403610, guid: df30a28ea06e86c498da59465408ebca, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 89.9999
+      objectReference: {fileID: 0}
+    - target: {fileID: 103610, guid: df30a28ea06e86c498da59465408ebca, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: df30a28ea06e86c498da59465408ebca, type: 3}

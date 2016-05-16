@@ -47,7 +47,7 @@ public class Jetpack {
 
         // Apply joystick input to torque
         var rigidbody = target.GetComponent<Rigidbody>();
-        rigidbody.AddRelativeTorque(new Vector3(joyY * joystickAmplitude, joyZ * joystickAmplitude, joyX * joystickAmplitude));
+        rigidbody.AddRelativeTorque(new Vector3(joyY * joystickAmplitude, joyZ * joystickAmplitude / 4, joyX * joystickAmplitude));
 
         // Apply joystick input for thrut
         rigidbody.AddRelativeForce(new Vector3(joySideThrust * thrustAmplitude, joyVerticalThrust * thrustAmplitude, joyThrust * thrustAmplitude));
