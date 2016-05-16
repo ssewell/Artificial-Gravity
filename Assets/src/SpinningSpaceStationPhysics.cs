@@ -1,22 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SpaceStationForce{
-    protected GameObject target;
-    public bool DebugDraw = true;
-
-    public SpaceStationForce(GameObject target) {
+public class SpinningSpaceStationPhysics : MonoBehaviour{
+    
+    public void Apply(GameObject target) {
         this.target = target;
-    }
-
-    public void Apply() {
         ApplyLinear();
     }
 
     public void ApplyLinear() {
         Rigidbody tRigidBody = target.GetComponent<Rigidbody>();
         float mass = tRigidBody.mass;
-        Debug.Log(mass);
         float angularVelocity = new Vector3(0, 0.05f, 0).magnitude;
         Vector3 tPosition = target.transform.position;
         Vector3 tVelocity= target.GetComponent<Rigidbody>().velocity;
@@ -63,18 +57,6 @@ public class SpaceStationForce{
         float antiCentrifugalForce = Mathf.Pow(fComponent, 2) / radius;
         if (antiCentrifugalForce > 1.8f) antiCentrifugalForce = 1.8f;
         tRigidBody.velocity -= centrifugalForceVector * antiCentrifugalForce * Time.fixedDeltaTime;
-
-        /*
-
-        if (DebugDraw) {
-            Debug.DrawRay(tPosition, f, Color.red);
-            Debug.DrawRay(tPosition, tRigidBody.velocity, Color.blue);
-        }
-
-        if (i++ % 10 == 0) {
-           Debug.Log(centrifugalForce.ToString() + ", antiCentrifugalForce: " + antiCentrifugalForce.ToString() + ", actual: " + tRigidBody.velocity.magnitude.ToString() + ", final: " + f.magnitude.ToString());
-        }
-        */
     }
 
     // Get the vector of the moving air
@@ -104,4 +86,6 @@ public class SpaceStationForce{
     protected float GetLinearVelocity(float angularVelocity, float radius) {
         return angularVelocity * radius;
     }
+
+    protected GameObject target;
 }

@@ -3,15 +3,12 @@ using System;
 using System.Collections;
 
 
-public class AirResistanceForce {
+public class AirResistance : MonoBehaviour {
 
-    public AirResistanceForce(GameObject spaceStation, GameObject target, Character character) {
+    public SoundService SoundService;
+
+    public void Apply(GameObject target) {
         this.target = target;
-        this.spaceStation = spaceStation;
-        sound = character.Sound;
-    }
-
-    public void Apply() {
         ApplyLinear();
         ApplyTorque();
     }
@@ -39,15 +36,8 @@ public class AirResistanceForce {
         if (airVelocityNomalized < 0.0f) airVelocityNomalized = 0.0f;
         airVelocityNomalized = (float) Math.Pow(airVelocityNomalized, 2.0f);
 
-        sound.PlayAudioForValue(9, airVelocityNomalized, 0.5f, 0, 1.0f, 0.9f, 1.5f, 200f, 6000f);
-
-        //(int soundID, float magnitude, float smoothing, float minVolume, float maxVolume, float minPitch, float maxPitch, float minFilter, float maxFilter) {
-
-
-
-
-
-        }
+        SoundService.PlayAudioForValue(9, airVelocityNomalized, 0.5f, 0, 1.0f, 0.9f, 1.5f, 200f, 6000f);
+    }
 
     protected void ApplyTorque() {
         Vector3 targetVector = target.transform.position;
@@ -90,6 +80,5 @@ public class AirResistanceForce {
     }
 
     protected GameObject target;
-    protected GameObject spaceStation;
     protected SoundService sound;
 }

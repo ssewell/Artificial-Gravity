@@ -596,6 +596,10 @@ GameObject:
   - 114: {fileID: 234731551}
   - 114: {fileID: 234731552}
   - 114: {fileID: 234731557}
+  - 114: {fileID: 234731553}
+  - 114: {fileID: 234731554}
+  - 114: {fileID: 234731555}
+  - 114: {fileID: 234731558}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -626,9 +630,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b66a2319cccc9654ab36aa2e6390a9ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpaceStation: {fileID: 2085000225}
+  SpinningSpaceStationPhysics: {fileID: 234731555}
+  AirResistance: {fileID: 234731554}
+  Jetpack: {fileID: 234731558}
   Mass: 1.5
-  Parent: {fileID: 234731551}
+--- !u!114 &234731553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 234731550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c03e65e9da503da428969098c8d57450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: {fileID: 0}
+--- !u!114 &234731554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 234731550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bab949dc9ea36254e93d75cfbe319706, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SoundService: {fileID: 1063240338}
+--- !u!114 &234731555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 234731550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11a60dc990263c240b39ffe83cc34b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &234731556
 Transform:
   m_ObjectHideFlags: 0
@@ -658,10 +698,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce2c97b71bfe24026a8c1e35b8323199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitalStrength: 0.3
+  InitalStrength: 1
   DistanceBeforeShoesTakeEffect: 100
   DebugDraw: 1
   Magnet: {fileID: 1116342928}
+--- !u!114 &234731558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 234731550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5f41ee2e55fd8048a6630841d3afd44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PowerScale: 1
+  SoundService: {fileID: 1063240338}
 --- !u!1001 &276082551
 Prefab:
   m_ObjectHideFlags: 0
@@ -855,7 +908,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 103610, guid: df30a28ea06e86c498da59465408ebca, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: df30a28ea06e86c498da59465408ebca, type: 3}
@@ -3189,7 +3242,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 103610, guid: df30a28ea06e86c498da59465408ebca, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: df30a28ea06e86c498da59465408ebca, type: 3}
