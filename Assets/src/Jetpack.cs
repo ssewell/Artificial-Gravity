@@ -12,7 +12,7 @@ public class Jetpack {
 
 	public void Apply() {
 
-        float joystickAmplitude = 0.1f * powerScale;
+        float joystickAmplitude = 0.5f * powerScale;
         float thrustAmplitude = 8.0f * powerScale;
 
         // Collect joystick input
